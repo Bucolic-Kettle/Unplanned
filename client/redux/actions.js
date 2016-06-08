@@ -1,4 +1,12 @@
 const actions = {
+  profile: {
+    uploadProfileImage(img) {
+      return {
+        type: 'UPLOAD_PROFILE_IMAGE',
+        img,
+      };
+    },
+  },
   updateUserList(newUserList) {
     return {
       type: 'UPDATE_USERLIST',

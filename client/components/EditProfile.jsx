@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import actions from '../redux/actions.js';
 
 class EditProfile extends Component {
   constructor(props) {
@@ -40,6 +41,14 @@ class EditProfile extends Component {
           <div className="popup">
             <div>Edit Your Profile</div>
             <img alt="" src={this.user.image} />
+            <div>Change Profile Picture:</div>
+            <input
+              className="fileInput"
+              type="file"
+              onChange={(e) => {
+                actions.profile.uploadProfileImage(e.target.files[0]);
+              }}
+            />
             <div>{this.user.name}</div>
             <form
               className="pure-form pure-form-stacked"
