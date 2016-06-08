@@ -25,11 +25,10 @@ const App = (props) => (
           />
 
           <div className="pure-u-1-3">
-            <TextChat />
+            <TextChat chatWith={props.chatId} />
           </div>
 
         </div>
-
         <Popover
           users={props.users}
           meet={props.meet}
