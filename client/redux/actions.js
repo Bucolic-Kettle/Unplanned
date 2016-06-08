@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const actions = {
+<<<<<<< HEAD
   uploadProfileImage(img) {
     const data = new FormData();
     data.append('image', img);
@@ -43,6 +44,12 @@ const actions = {
 
       //   }
       // );
+=======
+  setChat(socketId) {
+    return {
+      type: 'SET_CHAT',
+      socketId,
+>>>>>>> 6b22539b8d3353718c75eaa05cda5e63dcb721e0
     };
   },
   updateUserList(newUserList) {

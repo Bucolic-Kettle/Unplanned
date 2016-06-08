@@ -11,6 +11,13 @@ class Options extends Component {
     this.user[optionType] = !this.user[optionType];
   }
 
+  handleText() {
+    const msg = this.refs.chatTest.value;
+    console.log(window.socket.id);
+    window.socket.emit('test', msg);
+    this.refs.chatTest.value = '';
+  }
+
   render() {
     const availStyle = this.user.available ? 'pure-button pure-button-active button-success' :
       'pure-button button-error';
@@ -54,6 +61,14 @@ class Options extends Component {
           <i className="fa fa-beer" aria-hidden="true"></i>
           {' '}Beer
         </button>
+
+        <input ref="chatTest" type="text" />
+        <button
+          value="test" className={`${beerStyle} optionType`}
+          onClick={() => { this.handleText(); }}
+        >
+        </button>
+
       </div>
     );
   }
