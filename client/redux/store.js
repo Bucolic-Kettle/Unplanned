@@ -1,12 +1,12 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
-import logger from 'redux-logger';
-// add middleware
+import thunkMiddleware from 'redux-thunk';
 
-const finalCreateStore = compose(
-	applyMiddleware(logger())
-)(createStore);
+const enhancers = compose(
+  applyMiddleware(thunkMiddleware),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+  );
 
 export default function configureStore(initalState = { users: {} }) {
-  return finalCreateStore(reducer, initalState);
+  return createStore(reducer, initalState, enhancers);
 }
