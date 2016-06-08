@@ -1,4 +1,10 @@
 const actions = {
+  setChat(socketId) {
+    return {
+      type: 'SET_CHAT',
+      socketId,
+    };
+  },
   updateUserList(newUserList) {
     return {
       type: 'UPDATE_USERLIST',
