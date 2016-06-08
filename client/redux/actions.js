@@ -12,7 +12,6 @@ const actions = {
       },
     };
 
-
     // console.log('request:', request);
 
     console.log('img:', img);
