@@ -10,8 +10,14 @@ export default function reducer(state, action) {
         users: action.newUserList,
         meet: state.meet,
         gmap: state.gmap,
-        chatBox: state.chatBox
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
+    }
+
+    case 'SET_CHAT': {
+      console.log('setting chat');
+      return Object.assign({}, state, { chatBox: true, chatId: action.socketId});
     }
 
     case 'UPDATE_OPENED_USER_ID': {
@@ -21,7 +27,8 @@ export default function reducer(state, action) {
         gmap: {
           openedUserId: action.socketId,
         },
-        chatBox: state.chatBox
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -34,7 +41,8 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
-        chatBox: state.chatBox
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -47,7 +55,8 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
-        chatBox: state.chatBox
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -60,7 +69,8 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
-        chatBox: state.chatBox
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -73,7 +83,8 @@ export default function reducer(state, action) {
           acceptedId: action.acceptedId,
         },
         gmap: state.gmap,
-        chatBox: state.chatBox
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 

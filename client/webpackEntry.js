@@ -17,6 +17,7 @@ const initialState = {
     openedUserId: undefined,
   },
   chatBox: false,
+  chatId: null,
 };
 
 // Declare variables that will be used throughout for

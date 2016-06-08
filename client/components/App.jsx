@@ -5,6 +5,7 @@ import EditProfile from './EditProfile.jsx';
 import Nav from './Nav.jsx';
 import Splash from './splash/Splash.jsx';
 import Peer from './PeerConfig.jsx';
+import TextChat from './TextChat.jsx';
 
 import Gmap from './Gmap.jsx';
 import { connect } from 'react-redux';
@@ -17,10 +18,18 @@ const App = (props) => (
     {window.socket.api.isLoggedIn ? // If logged in, render main app...
       <div className="mapContainer">
         <Options />
-        <Gmap
-          users={props.users} dispatch={props.dispatch}
-          gmap={props.gmap} chatBox={props.chatBox}
-        />
+        <div className="pure-g">
+          <Gmap
+            users={props.users} dispatch={props.dispatch}
+            gmap={props.gmap} chatBox={props.chatBox}
+          />
+
+          <div className="pure-u-1-3">
+            <TextChat />
+          </div>
+
+        </div>
+
         <Popover
           users={props.users}
           meet={props.meet}
