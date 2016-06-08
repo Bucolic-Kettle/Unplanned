@@ -1,9 +1,14 @@
 const actions = {
   profile: {
     uploadProfileImage(img) {
-      return {
-        type: 'UPLOAD_PROFILE_IMAGE',
-        img,
+      // request = axios.post('')
+
+      return function () {
+        // axios request
+        return {
+          type: 'UPLOAD_PROFILE_IMAGE',
+          img,
+        };
       };
     },
   },

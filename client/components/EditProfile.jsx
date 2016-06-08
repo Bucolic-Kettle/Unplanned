@@ -39,9 +39,13 @@ class EditProfile extends Component {
       editProfilePage = (
         <div className="overlay">
           <div className="popup">
+
             <div>Edit Your Profile</div>
+
             <img alt="" src={this.user.image} />
+
             <div>Change Profile Picture:</div>
+
             <input
               className="fileInput"
               type="file"
@@ -49,7 +53,8 @@ class EditProfile extends Component {
                 actions.profile.uploadProfileImage(e.target.files[0]);
               }}
             />
-            <div>{this.user.name}</div>
+
+            <h2>{this.user.name}</h2>
             <form
               className="pure-form pure-form-stacked"
               onSubmit={this.handleSubmit.bind(this)}
