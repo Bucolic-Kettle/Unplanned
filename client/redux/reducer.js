@@ -1,11 +1,16 @@
 export default function reducer(state, action) {
   switch (action.type) {
 
+    case 'CHAT':
+    console.log('action creator fired: ', action.type)
+      return state;//{...state, action.chatId}
+
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {
         users: action.newUserList,
         meet: state.meet,
         gmap: state.gmap,
+        chatBox: state.chatBox
       });
     }
 
@@ -16,6 +21,7 @@ export default function reducer(state, action) {
         gmap: {
           openedUserId: action.socketId,
         },
+        chatBox: state.chatBox
       });
     }
 
@@ -28,6 +34,7 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox
       });
     }
 
@@ -40,6 +47,7 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox
       });
     }
 
@@ -52,6 +60,7 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox
       });
     }
 
@@ -64,6 +73,7 @@ export default function reducer(state, action) {
           acceptedId: action.acceptedId,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox
       });
     }
 
