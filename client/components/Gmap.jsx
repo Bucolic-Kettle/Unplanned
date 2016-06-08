@@ -83,12 +83,14 @@ class Gmap extends Component {
           <div className="markerBio">{marker.bio}</div>
           {// Don't show the Let's Meet button on a users's own InfoWindow
           marker.userID !== this.user.userID ?
+            <div>
             <button
               className="buttonSendMeetReq"
               onClick={this.handleMeetRequest.bind(this, socketId)}
             >
               Let's Meet
-            </button> :
+            </button>
+            </div> :
             null
           }
           {// Don't show the Let's Meet button on a users's own InfoWindow
@@ -161,6 +163,7 @@ Gmap.propTypes = {
   users: React.PropTypes.object,
   dispatch: React.PropTypes.func,
   gmap: React.PropTypes.object,
+  chatBox: React.PropTypes.bool,
 };
 
 export default Gmap;

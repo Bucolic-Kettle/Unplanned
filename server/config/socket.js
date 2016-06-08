@@ -58,6 +58,18 @@ const makeSocketServer = function socketServer(http) {
     // to all connected clients for real-time update
     setInterval(updateAllUsers, 2000);
 
+
+    socket.on('test', function(senderId, receiverId, message) {
+
+      socket.broadcast.to(`/#${receiverId}`).emit('chatMessage', {senderId, message});
+
+      console.log('got a test ', senderId, receiverId);
+
+    //  socket.broadcast.emit('respTest', senderId)
+
+     // socket.broadcast.to(`/#${receiverId}`).emit('respTest', senderId);
+    })
+
     // Helper functions so the server can redirect meeting requests
     const sendMeetingRequest = function sendMeetingRequest(senderId, receiverId) {
       socket.broadcast.to(`/#${receiverId}`).emit('receive meeting request', senderId);
