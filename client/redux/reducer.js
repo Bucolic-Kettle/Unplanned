@@ -67,6 +67,12 @@ export default function reducer(state, action) {
       });
     }
 
+    case 'UPLOAD_PROFILE_IMAGE': {
+      return Object.assign({}, {
+        img: state.img
+      });
+    }
+
     default:
       return state;
   }
