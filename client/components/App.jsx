@@ -19,7 +19,7 @@ const App = (props) => (
         <Options />
         <Gmap
           users={props.users} dispatch={props.dispatch}
-          gmap={props.gmap}
+          gmap={props.gmap} chatBox={props.chatBox}
         />
         <Popover
           users={props.users}
@@ -48,6 +48,7 @@ App.propTypes = {
   users: React.PropTypes.object,
   meet: React.PropTypes.object,
   gmap: React.PropTypes.object,
+  chatBox: React.PropTypes.bool,
 };
 
 export default connect(mapStateToProps)(App);
