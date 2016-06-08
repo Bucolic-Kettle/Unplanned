@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import actions from '../redux/actions.js';
+import { connect } from 'react-redux';
 
 class EditProfile extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class EditProfile extends Component {
     this.state = {
       shouldRender: window.editProfile,
       bio: this.user.bio,
+      isImageUploading: false,
     };
   }
 
@@ -50,9 +52,12 @@ class EditProfile extends Component {
               className="fileInput"
               type="file"
               onChange={(e) => {
-                actions.profile.uploadProfileImage(e.target.files[0]);
+                this.setState({ isImageUploading: true });
+                actions.uploadProfileImage(e.target.files[0]);
               }}
             />
+
+            <strong>{!!this.state.isImageUploading ? 'Uploading...' : ''}</strong>
 
             <h2>{this.user.name}</h2>
             <form
@@ -81,4 +86,10 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+const mapStateToProps = function (state) {
+  return {
+    isImageUploading: state.isImageUploading,
+  };
+};
+
+export default connect(mapStateToProps)(EditProfile);

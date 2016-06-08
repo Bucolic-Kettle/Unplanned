@@ -16,6 +16,10 @@ const initialState = {
   gmap: {
     openedUserId: undefined,
   },
+  imageUpload: {
+    isUploading: false,
+    uploadErrorMsg: '',
+  },
 };
 
 // Declare variables that will be used throughout for
