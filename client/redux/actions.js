@@ -50,6 +50,12 @@ const actions = {
       socketId,
     };
   },
+  closeChat(socketId) {
+    return {
+      type: 'CLOSE_CHAT',
+      socketId,
+    };
+  },
   updateUserList(newUserList) {
     return {
       type: 'UPDATE_USERLIST',
