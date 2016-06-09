@@ -8,7 +8,7 @@ const Splash = function Splash() {
     <div id="Main">
       <div className="splash-container">
         <video autoPlay loop id="bgvid">
-          <source src="./assets/fair.mp4" type="video/mp4" />
+          <source src="./assets/fair2.mp4" type="video/mp4" />
         </video>
         <div className="splash">
           <h1 className="splash-head">life is: unplanned</h1>

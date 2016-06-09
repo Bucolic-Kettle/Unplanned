@@ -45,6 +45,12 @@ class Gmap extends Component {
     const matchedUsers = Object.keys(this.props.users).filter(doesUserMatch);
     return matchedUsers;
   }
+  handleChat(socketId) {
+    // send dispatch to update sender recipientId
+    this.props.dispatch(actions.setChat(socketId));
+    // emit socket to update recipients requesterId
+    // window.socket.api.sendMeetingRequest(socketId);
+  }
 
   handleMeetRequest(socketId) {
     // send dispatch to update sender recipientId
@@ -77,11 +83,23 @@ class Gmap extends Component {
           <div className="markerBio">{marker.bio}</div>
           {// Don't show the Let's Meet button on a users's own InfoWindow
           marker.userID !== this.user.userID ?
+            <div>
             <button
               className="buttonSendMeetReq"
               onClick={this.handleMeetRequest.bind(this, socketId)}
             >
               Let's Meet
+            </button>
+            </div> :
+            null
+          }
+          {// Don't show the Let's Meet button on a users's own InfoWindow
+          marker.userID !== this.user.userID ?
+            <button
+              className="buttonSendMeetReq"
+              onClick={this.handleChat.bind(this, socketId)}
+            >
+              Let's Chat
             </button> :
             null
           }
@@ -97,10 +115,11 @@ class Gmap extends Component {
         containerElement={
           <div
             {...this.props}
+            className="pure-u-2-3"
             style={{
-              margin: 'auto',
-              width: '100%',
-              height: '100%',
+              // margin: 'auto',
+              // width: '100%',
+              height: '100vh',
             }}
           >
           </div>
@@ -144,6 +163,7 @@ Gmap.propTypes = {
   users: React.PropTypes.object,
   dispatch: React.PropTypes.func,
   gmap: React.PropTypes.object,
+  chatBox: React.PropTypes.bool,
 };
 
 export default Gmap;

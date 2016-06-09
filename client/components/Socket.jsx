@@ -12,6 +12,8 @@ class Socket extends React.Component {
     setInterval(sendToServer, 5000);
     setInterval(updateLocation, 5000);
 
+    socketClient.on('chatMessage', (data) => { console.log('Recieved: ', data); });
+
     // Listens for update then changes local state
     socketClient.on('update all users', this.updateUserList.bind(this));
 
@@ -40,6 +42,11 @@ class Socket extends React.Component {
   receivedRejection() {
     // alert(`i got rejected. My name is ${window.socket.api.user.name}`);
     this.props.dispatch(actions.clearMeet());
+  }
+
+  handleMessage(chatId) {
+
+    this.props.dispatch(actions.updateMessager(chatId));
   }
 
   render() {

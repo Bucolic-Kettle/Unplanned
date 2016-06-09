@@ -16,6 +16,12 @@ const initialState = {
   gmap: {
     openedUserId: undefined,
   },
+  imageUpload: {
+    isUploading: false,
+    uploadErrorMsg: '',
+  },
+  chatBox: false,
+  chatId: null,
 };
 
 // Declare variables that will be used throughout for
@@ -131,6 +137,12 @@ window.fbAsyncInit = () => {
   }, { scope: 'email' }, { return_scopes: true });
 };
 
+socketApi.handleMessage = function handleMessage(receiverId, message) {
+  if (socket.connected && socketApi.isLoggedIn) {
+    socket.emit('test', socket.id, receiverId, message);
+  }
+};
+
 // Socket event emitter for updating current user
 // which would then update the entire activeUsers
 // object that is emitted to all other users.
@@ -152,6 +164,12 @@ socketApi.updateLocation = function updateLocation() {
 socketApi.updateBio = function updateBio() {
   if (socket.connected && socketApi.isLoggedIn) {
     socket.emit('update bio', thisUser);
+  }
+};
+
+socketApi.updateProfile = function updateProfile() {
+  if (socket.connected && socketApi.isLoggedIn) {
+    socket.emit('update profile', thisUser);
   }
 };
 

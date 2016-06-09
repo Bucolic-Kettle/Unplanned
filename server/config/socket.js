@@ -47,6 +47,7 @@ const makeSocketServer = function socketServer(http) {
     // Database callback handlers
     socket.on('save user to db', userHandlers.create);
     socket.on('update bio', userHandlers.updateBio);
+    socket.on('update profile', userHandlers.updateProfile);
     socket.on('check for existing', checkExisting);
 
     // Active Users callback handlers
@@ -57,6 +58,18 @@ const makeSocketServer = function socketServer(http) {
     // Push the updated activeUsers object every 2 seconds
     // to all connected clients for real-time update
     setInterval(updateAllUsers, 2000);
+
+
+    socket.on('test', function(senderId, receiverId, message) {
+
+      socket.broadcast.to(`/#${receiverId}`).emit('chatMessage', {senderId, message});
+
+      console.log('got a test ', senderId, receiverId);
+
+    //  socket.broadcast.emit('respTest', senderId)
+
+     // socket.broadcast.to(`/#${receiverId}`).emit('respTest', senderId);
+    })
 
     // Helper functions so the server can redirect meeting requests
     const sendMeetingRequest = function sendMeetingRequest(senderId, receiverId) {

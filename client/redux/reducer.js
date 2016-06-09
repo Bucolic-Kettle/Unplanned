@@ -1,12 +1,23 @@
 export default function reducer(state, action) {
   switch (action.type) {
 
+    case 'CHAT':
+    console.log('action creator fired: ', action.type)
+      return state;//{...state, action.chatId}
+
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {
         users: action.newUserList,
         meet: state.meet,
         gmap: state.gmap,
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
+    }
+
+    case 'SET_CHAT': {
+      console.log('setting chat');
+      return Object.assign({}, state, { chatBox: true, chatId: action.socketId});
     }
 
     case 'UPDATE_OPENED_USER_ID': {
@@ -16,6 +27,8 @@ export default function reducer(state, action) {
         gmap: {
           openedUserId: action.socketId,
         },
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -28,6 +41,8 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -40,6 +55,8 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -52,6 +69,8 @@ export default function reducer(state, action) {
           acceptedId: undefined,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
@@ -64,12 +83,31 @@ export default function reducer(state, action) {
           acceptedId: action.acceptedId,
         },
         gmap: state.gmap,
+        chatBox: state.chatBox,
+        chatId: state.chatId,
       });
     }
 
-    case 'UPLOAD_PROFILE_IMAGE': {
+    case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
+      console.log('request sent');
       return Object.assign({}, {
         img: state.img,
+        isImageUploading: true,
+      });
+    }
+
+    case 'UPLOAD_PROFILE_IMAGE_SUCCESS': {
+      return Object.assign({}, {
+        isImageUploading: false,
+      });
+    }
+
+    case 'UPLOAD_PROFILE_IMAGE_FAILURE': {
+      return Object.assign({}, {
+        imageUpload: {
+          isUploading: false,
+          uploadErrorMsg: 'Could not upload image',
+        }
       });
     }
 
