@@ -24,9 +24,7 @@ const App = (props) => (
             gmap={props.gmap} chatBox={props.chatBox}
           />
           <div className="pure-u-1-3">
-
-            {props.chatBox ? <TextChat chatWith={props.chatId} messages={props.messages} dispatch={props.dispatch} users={props.users}/> : null}
-
+            <TextChat chatWith={props.chatId} messages={props.messages} dispatch={props.dispatch} users={props.users}/>
           </div>
 
         </div>
