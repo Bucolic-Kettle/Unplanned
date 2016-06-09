@@ -40,12 +40,10 @@ class TextChat extends React.Component {
   handleText(chatId) {
 
     const text = this.refs.chatTest.value;
-//    console.log(window.socket.id, chatId);
 
     window.socket.api.handleMessage(chatId, {text, time: this.getDateTime()});
 
-    this.props.dispatch(actions.updateMessages({senderId: chatId, text, time: this.getDateTime()}));
-    //window.socket.emit('test', msg);
+    this.props.dispatch(actions.updateMessages({senderId: chatId, username: window.socket.api.user.name, text, time: this.getDateTime()}));
     this.refs.chatTest.value = '';
   }
 
@@ -67,7 +65,9 @@ class TextChat extends React.Component {
         </button>
         <div>
           <ul>
-            {list ? list.map((message, i) => <li key={i}> {this.props.users[this.props.chatWith].name} {message.text}</li> ) : null}
+            {list ? list.map((message, i) => <li key={i}> {
+              message.username === undefined ? this.props.users[this.props.chatWith].name : message.username
+            } {message.text}</li> ) : null}
           </ul>
         </div>
         <input ref="chatTest" type="text" />
