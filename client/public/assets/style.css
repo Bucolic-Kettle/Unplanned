@@ -194,6 +194,11 @@ a.pure-button-primary {
     background: #111;
 }
 
+input.h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
@@ -297,7 +302,7 @@ body, p {
 
 .home-menu {
   box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-  background-color: #e74c3c;
+  background-color: #354CA0;
   color: white;
 }
 

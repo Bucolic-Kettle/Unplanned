@@ -16,6 +16,10 @@ const initialState = {
   gmap: {
     openedUserId: undefined,
   },
+  imageUpload: {
+    isUploading: false,
+    uploadErrorMsg: '',
+  },
   chatBox: false,
   chatId: null,
 };
@@ -85,7 +89,7 @@ window.fbAsyncInit = () => {
   // Your app should have Valid OAuth redirect URIs
   // setup eg. http://localhost:8000/auth/facebook/callback
   fb.init({
-    appId: '1772399542971732',
+    appId: '1790360197850121',
     xfbml: true,
     version: 'v2.6',
   });
@@ -160,6 +164,12 @@ socketApi.updateLocation = function updateLocation() {
 socketApi.updateBio = function updateBio() {
   if (socket.connected && socketApi.isLoggedIn) {
     socket.emit('update bio', thisUser);
+  }
+};
+
+socketApi.updateProfile = function updateProfile() {
+  if (socket.connected && socketApi.isLoggedIn) {
+    socket.emit('update profile', thisUser);
   }
 };
 

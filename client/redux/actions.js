@@ -1,4 +1,49 @@
+import axios from 'axios';
+
 const actions = {
+  uploadProfileImage(img) {
+    const data = new FormData();
+    data.append('image', img);
+
+    const config = {
+      headers: {
+        'Content-Type': img.type,
+      },
+    };
+
+    // console.log('request:', request);
+
+    console.log('img:', img);
+
+    return (dispatch) => {
+      /*const request = */axios.put('/api/v1/upload', data, config).catch(err => console.log(err));
+
+     // console.log('returned function');
+      // dispatch({
+      //   type: 'UPLOAD_PROFILE_IMAGE_REQUEST',
+      //   img,
+      // });
+
+      // return request
+      //   .then(() => {
+
+      //     dispatch({
+      //       type: 'UPLOAD_PROFILE_IMAGE_SUCCESS',
+      //     });
+
+      //   })
+      //   .catch((err) => {
+
+      //     console.log('Image upload failure:', err);
+
+      //     dispatch({
+      //       type: 'UPLOAD_PROFILE_IMAGE_FAILURE'
+      //     });
+
+      //   }
+      // );
+    };
+  },
   setChat(socketId) {
     return {
       type: 'SET_CHAT',

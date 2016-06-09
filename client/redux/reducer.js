@@ -88,6 +88,29 @@ export default function reducer(state, action) {
       });
     }
 
+    case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
+      console.log('request sent');
+      return Object.assign({}, {
+        img: state.img,
+        isImageUploading: true,
+      });
+    }
+
+    case 'UPLOAD_PROFILE_IMAGE_SUCCESS': {
+      return Object.assign({}, {
+        isImageUploading: false,
+      });
+    }
+
+    case 'UPLOAD_PROFILE_IMAGE_FAILURE': {
+      return Object.assign({}, {
+        imageUpload: {
+          isUploading: false,
+          uploadErrorMsg: 'Could not upload image',
+        }
+      });
+    }
+
     default:
       return state;
   }

@@ -47,6 +47,7 @@ const makeSocketServer = function socketServer(http) {
     // Database callback handlers
     socket.on('save user to db', userHandlers.create);
     socket.on('update bio', userHandlers.updateBio);
+    socket.on('update profile', userHandlers.updateProfile);
     socket.on('check for existing', checkExisting);
 
     // Active Users callback handlers

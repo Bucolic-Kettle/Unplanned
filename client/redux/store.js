@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 const enhancers = compose(
   applyMiddleware(thunkMiddleware),
   window.devToolsExtension ? window.devToolsExtension() : f => f
-  );
+);
 
 export default function configureStore(initalState = { users: {} }) {
   return createStore(reducer, initalState, enhancers);
