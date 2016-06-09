@@ -286,8 +286,9 @@ body, p {
   font-size: 1.2em;
 }
 
-.markerProfilePic {
-  width: 200px;
+.markerProfilePic > img {
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .markerBio {
