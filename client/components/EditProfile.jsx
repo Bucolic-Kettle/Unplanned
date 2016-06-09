@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import actions from '../redux/actions.js';
 import { connect } from 'react-redux';
 
@@ -23,7 +24,7 @@ class EditProfile extends Component {
 
   hideProfile(e) {
     e.preventDefault();
-    this.setState({ shouldRender: false });
+    this.setState({ shouldRender: false});
   }
 
   handleSubmit(e) {
@@ -43,9 +44,16 @@ class EditProfile extends Component {
     this.setState(this.state);
   }
 
+  updateProfileImage(e) {
+    this.setState({ isImageUploading: true });
+    this.props.uploadImage(e.target.files[0]);
+  }
+
   render() {
     let editProfilePage;
+
     if (this.state.shouldRender) {
+      
       editProfilePage = (
         <div className="overlay">
           <div className="popup">
@@ -59,10 +67,7 @@ class EditProfile extends Component {
             <input
               className="fileInput"
               type="file"
-              onChange={(e) => {
-                this.setState({ isImageUploading: true });
-                actions.uploadProfileImage(e.target.files[0]);
-              }}
+              onChange={this.uploadProfileImage}
             />
 
             <strong>{!!this.state.isImageUploading ? 'Uploading...' : ''}</strong>
@@ -100,4 +105,11 @@ const mapStateToProps = function (state) {
   };
 };
 
-export default connect(mapStateToProps)(EditProfile);
+const mapDispatchToProps = (dispatch) => {
+  const profileActions = bindActionCreators(actions, dispatch);
+  return {
+    uploadImage: profileActions.uploadProfileImage,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile);
