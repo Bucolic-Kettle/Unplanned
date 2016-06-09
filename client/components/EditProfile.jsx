@@ -44,7 +44,7 @@ class EditProfile extends Component {
     this.setState(this.state);
   }
 
-  updateProfileImage(e) {
+  uploadProfileImage(e) {
     this.setState({ isImageUploading: true });
     this.props.uploadImage(e.target.files[0]);
   }
@@ -67,10 +67,10 @@ class EditProfile extends Component {
             <input
               className="fileInput"
               type="file"
-              onChange={this.uploadProfileImage}
+              onChange={this.uploadProfileImage.bind(this)}
             />
 
-            <strong>{!!this.state.isImageUploading ? 'Uploading...' : ''}</strong>
+            <strong>{!!this.props.isImageUploading ? 'Uploading...' : ''}</strong>
 
             <form
               className="pure-form pure-form-stacked"
