@@ -9,7 +9,6 @@ class EditProfile extends Component {
     this.state = {
       shouldRender: window.editProfile,
       bio: this.user.bio,
-      name: this.user.name,
       isImageUploading: false,
     };
   }
@@ -23,20 +22,13 @@ class EditProfile extends Component {
 
   hideProfile(e) {
     e.preventDefault();
-    this.setState({ shouldRender: false });
+    this.state.shouldRender = false;
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.user.bio = e.target.bio.value;
-    this.user.name = e.target.name.value;
-    window.socket.api.updateProfile();
-
-    this.setState({
-      shouldRender: false,
-      bio: this.user.bio,
-      name: this.user.name,
-    });
+    window.socket.api.updateBio();
   }
 
   handleChange() {
@@ -67,12 +59,12 @@ class EditProfile extends Component {
 
             <strong>{!!this.state.isImageUploading ? 'Uploading...' : ''}</strong>
 
+            <h2>{this.user.name}</h2>
             <form
               className="pure-form pure-form-stacked"
               onSubmit={this.handleSubmit.bind(this)}
             >
               <fieldset className="pure-group">
-                <input type="text" className="pure-input-1-2 h2" name="name" defaultValue={this.state.name} />
                 <textarea
                   name="bio" defaultValue={this.state.bio} className="pure-input-1-2"
                   placeholder={`About ${this.user.name}`}

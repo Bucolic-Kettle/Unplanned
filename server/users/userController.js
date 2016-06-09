@@ -19,18 +19,7 @@ const updateBio = function updateBio(user) {
       // success
     })
     .catch((err) => {
-      console.log('user.updateBio error:', err);
-    });
-};
-
-const updateProfile = function updateProfile(user) {
-  User.findOneAndUpdate({ userID: user.userID },
-    Object.assign({}, user))
-    .then(() => {
-      // success
-    })
-    .catch((err) => {
-      console.log('user.updateProfile error:', err);
+      throw err;
     });
 };
 
@@ -40,7 +29,7 @@ const getEmail = function getEmail(userId, callback) {
       callback(res);
     })
     .catch((err) => {
-      console.log('user.getEmail error:', err);
+      throw err;
     });
 };
 
@@ -54,7 +43,7 @@ const checkExisting = (userID, socket) => {
       }
     })
     .catch((err) => {
-      console.log('user.checkExisting error:', err);
+      throw err;
     });
 };
 
@@ -72,14 +61,13 @@ const flagUser = (req, res) => {
       }
     })
     .catch((err) => {
-      console.log('user.flagUser error:', err);
+      throw err;
     });
 };
 
 module.exports = {
   create,
   updateBio,
-  updateProfile,
   checkExisting,
   flagUser,
   getEmail,
