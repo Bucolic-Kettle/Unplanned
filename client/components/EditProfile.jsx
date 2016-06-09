@@ -60,7 +60,9 @@ class EditProfile extends Component {
 
             <div>Edit Your Profile</div>
 
-            <img alt="" src={this.user.image} />
+            <div className="markerProfilePic">
+              <img alt="" src={this.user.image} />
+            </div>
 
             <div>Change Profile Picture:</div>
 
