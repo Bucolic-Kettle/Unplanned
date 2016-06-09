@@ -37,8 +37,11 @@ class TextChat extends React.Component {
     return dateTime;
   }
 
-  handleText(chatId) {
-
+  handleText(event, chatId) {
+    event.preventDefault();
+    event.stopPropagation();
+    const scrollBox = this.refs.chatBox;
+    scrollBox.scrollTop = scrollBox.clientHeight;
     const text = this.refs.chatTest.value;
 
     window.socket.api.handleMessage(chatId, {text, time: this.getDateTime()});
@@ -60,23 +63,25 @@ class TextChat extends React.Component {
         <button
           value="Close"
           onClick={this.handleClose.bind(this)}
+          className="pure-button button-chat-close"
         >
-          X
+          &times;
         </button>
-        <div>
+        <div className="chatbox" ref="chatBox">
           <ul>
             {list ? list.map((message, i) => <li key={i}> {
               message.username === undefined ? this.props.users[this.props.chatWith].name : message.username
             } {message.text}</li> ) : null}
           </ul>
         </div>
-        <input ref="chatTest" type="text" />
-        <button
-          value="test"
-          onClick={() => { this.handleText(this.props.chatWith); }}
-        >
-        Send Message
-        </button>
+        <form onSubmit={(event) => { this.handleText(event, this.props.chatWith); }}>
+          <input ref="chatTest" type="text" className="message-input"/>
+          <input
+            type="submit"
+            className="pure-button button-send-message"
+            value="Send"
+          />
+        </form>
       </div>
     );
   }
