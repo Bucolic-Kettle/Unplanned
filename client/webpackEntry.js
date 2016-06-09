@@ -167,6 +167,12 @@ socketApi.updateBio = function updateBio() {
   }
 };
 
+socketApi.updateProfile = function updateProfile() {
+  if (socket.connected && socketApi.isLoggedIn) {
+    socket.emit('update profile', thisUser);
+  }
+};
+
 // Socket event emitter for sending a meeting request
 // from current user to the recipient
 socketApi.sendMeetingRequest = function sendMeetingRequest(receiverId) {
