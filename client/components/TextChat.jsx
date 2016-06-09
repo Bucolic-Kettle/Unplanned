@@ -38,14 +38,14 @@ class TextChat extends React.Component {
   }
 
   handleText(chatId) {
-    // this.props.dispatch(actions.updateMessager(chatId));
-    // console.log(this.props);
-    const msg = this.refs.chatTest.value;
-    // console.log(window.socket.id, chatId);
 
-    window.socket.api.handleMessage(chatId, { msg, time: this.getDateTime() });
+    const text = this.refs.chatTest.value;
+//    console.log(window.socket.id, chatId);
 
-    // window.socket.emit('test', msg);
+    window.socket.api.handleMessage(chatId, {text, time: this.getDateTime()});
+
+    this.props.dispatch(actions.updateMessages({senderId: chatId, text, time: this.getDateTime()}));
+    //window.socket.emit('test', msg);
     this.refs.chatTest.value = '';
   }
 
@@ -56,9 +56,7 @@ class TextChat extends React.Component {
 
 
   render() {
-    const messages = [];
-    messages.push('This is a message');
-    messages.push('This is another message');
+    let list = this.props.messages[this.props.chatWith];
     return (
       <div className="overlay chat">
         <button
@@ -69,7 +67,7 @@ class TextChat extends React.Component {
         </button>
         <div>
           <ul>
-            {messages.map((message, i) => <li key={i}>{message}</li>)}
+            {list ? list.map((message, i) => <li key={i}> {this.props.users[this.props.chatWith].name} {message.text}</li> ) : null}
           </ul>
         </div>
         <input ref="chatTest" type="text" />
