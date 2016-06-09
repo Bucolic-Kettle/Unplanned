@@ -1,9 +1,9 @@
 export default function reducer(state, action) {
   switch (action.type) {
 
-    case 'CHAT':
-    console.log('action creator fired: ', action.type)
-      return state;//{...state, action.chatId}
+    // case 'CHAT':
+    // console.log('action creator fired: ', action.type)
+    //   return state;//{...state, action.chatId}
 
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {
@@ -16,8 +16,11 @@ export default function reducer(state, action) {
     }
 
     case 'SET_CHAT': {
-      console.log('setting chat');
-      return Object.assign({}, state, { chatBox: true, chatId: action.socketId});
+      return Object.assign({}, state, { chatBox: true, chatId: action.socketId });
+    }
+
+    case 'CLOSE_CHAT': {
+      return Object.assign({}, state, { chatBox: false, chatId: action.socketId });
     }
 
     case 'UPDATE_OPENED_USER_ID': {

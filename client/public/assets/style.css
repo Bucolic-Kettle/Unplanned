@@ -353,8 +353,8 @@ body, p {
   font-size: 14px;
 }
 
-/* 
-  This container class applies to a div which contains the entire app once logged-in. 
+/*
+  This container class applies to a div which contains the entire app once logged-in.
   The css style here is required to ensure the map can be full screen as the map is in mapContainer div.
 */
 .mapContainer {
@@ -467,4 +467,7 @@ video#bgvid {
   transition: all 0.6s ease-in-out;
 }
 
-
+.chat {
+  margin: 189px 0 0 1000px;
+  background: rgb(255, 255, 255);
+}
