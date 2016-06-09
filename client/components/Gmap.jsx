@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleMapLoader, GoogleMap, InfoWindow, Marker } from 'react-google-maps';
 import actions from '../redux/actions.js';
+import { connect } from 'react-redux';
 
 class Gmap extends Component {
 
@@ -45,6 +46,7 @@ class Gmap extends Component {
     const matchedUsers = Object.keys(this.props.users).filter(doesUserMatch);
     return matchedUsers;
   }
+
   handleChat(socketId) {
     // send dispatch to update sender recipientId
     this.props.dispatch(actions.setChat(socketId));
@@ -84,12 +86,12 @@ class Gmap extends Component {
           {// Don't show the Let's Meet button on a users's own InfoWindow
           marker.userID !== this.user.userID ?
             <div>
-            <button
-              className="buttonSendMeetReq"
-              onClick={this.handleMeetRequest.bind(this, socketId)}
-            >
-              Let's Meet
-            </button>
+              <button
+                className="buttonSendMeetReq"
+                onClick={this.handleMeetRequest.bind(this, socketId)}
+              >
+                Let's Meet
+              </button>
             </div> :
             null
           }
@@ -109,13 +111,15 @@ class Gmap extends Component {
     );
   }
 
+
   render() {
+    const { chatBox } = this.props;
     return (
       <GoogleMapLoader
         containerElement={
           <div
             {...this.props}
-            className="pure-u-2-3"
+            className="pure-u-1-1"
             style={{
               // margin: 'auto',
               // width: '100%',
@@ -166,4 +170,7 @@ Gmap.propTypes = {
   chatBox: React.PropTypes.bool,
 };
 
-export default Gmap;
+function mapStateToProps(state) {
+  return state;
+}
+export default connect(mapStateToProps)(Gmap);

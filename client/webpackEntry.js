@@ -22,6 +22,7 @@ const initialState = {
   },
   chatBox: false,
   chatId: null,
+  messages: {},
 };
 
 // Declare variables that will be used throughout for
@@ -89,7 +90,7 @@ window.fbAsyncInit = () => {
   // Your app should have Valid OAuth redirect URIs
   // setup eg. http://localhost:8000/auth/facebook/callback
   fb.init({
-    appId: '1790360197850121',
+    appId: '1772399542971732',
     xfbml: true,
     version: 'v2.6',
   });
