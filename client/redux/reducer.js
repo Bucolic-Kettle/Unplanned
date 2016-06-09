@@ -4,12 +4,14 @@ export default function reducer(state, action) {
   switch (action.type) {
     case 'UPDATE_MESSAGES':
       let msgHolder = null;
-console.log(state.messages)
+      
+      console.log(state.messages);
+
       if (state.messages[action.message.senderId] === undefined) {
-        console.log('in update condition', action.message.senderId)
-        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [action.message]})
+        console.log('in update condition', action.message.senderId);
+        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [action.message]});
       } else {
-        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [...state.messages[action.message.senderId], action.message]})
+        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [...state.messages[action.message.senderId], action.message]});
       }
 
       return Object.assign({}, {
@@ -115,20 +117,20 @@ console.log(state.messages)
 
     case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
       console.log('request sent');
-      return Object.assign({}, {
-        img: state.img,
+      return Object.assign({}, state, {
+        img: action.img,
         isImageUploading: true,
       });
     }
 
     case 'UPLOAD_PROFILE_IMAGE_SUCCESS': {
-      return Object.assign({}, {
+      return Object.assign({}, state, {
         isImageUploading: false,
       });
     }
 
     case 'UPLOAD_PROFILE_IMAGE_FAILURE': {
-      return Object.assign({}, {
+      return Object.assign({}, state, {
         imageUpload: {
           isUploading: false,
           uploadErrorMsg: 'Could not upload image',
