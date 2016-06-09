@@ -469,6 +469,11 @@ video#bgvid {
 }
 
 .chat {
+  top: auto;
+  left: auto;
+  right: 20px;
+  bottom: 80px;
+  position: absolute;
   background: rgb(255, 255, 255);
   border-color: darkGrey;
   border-radius: 3px;
@@ -477,7 +482,6 @@ video#bgvid {
   box-shadow: 1px 1px 2px #darkGrey;
   height: 75%;
   width: 25%;
-  margin: 180px 0 0 1020px;
 }
 
 .button-chat-close {
