@@ -3,6 +3,7 @@ import axios from 'axios';
 const actions = {
   uploadProfileImage(img) {
     console.log('uploadProfileImage!');
+
     const data = new FormData();
     data.append('image', img);
 
@@ -26,21 +27,20 @@ const actions = {
           dispatch({
             type: 'UPLOAD_PROFILE_IMAGE_SUCCESS',
           });
-
         })
         .catch((err) => {
+
           console.log('Image upload failure:', err);
 
           dispatch({
             type: 'UPLOAD_PROFILE_IMAGE_FAILURE'
           });
-
         }
       );
     }
   },
   updateMessages(message) {
-    console.log(message, "in action creator")
+    console.log(message, "in action creator");
     return {
       type: 'UPDATE_MESSAGES',
       message,
