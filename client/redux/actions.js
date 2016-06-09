@@ -42,6 +42,13 @@ const actions = {
 
       //   }
       // );
+    }
+},
+  updateMessages(message) {
+    console.log(message, "in action creator")
+    return {
+      type: 'UPDATE_MESSAGES',
+      message,
     };
   },
   setChat(socketId) {

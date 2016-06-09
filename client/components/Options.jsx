@@ -62,13 +62,6 @@ class Options extends Component {
           {' '}Beer
         </button>
 
-        <input ref="chatTest" type="text" />
-        <button
-          value="test" className={`${beerStyle} optionType`}
-          onClick={() => { this.handleText(); }}
-        >
-        </button>
-
       </div>
     );
   }

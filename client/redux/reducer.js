@@ -1,9 +1,25 @@
+import { merge } from 'lodash';
+
 export default function reducer(state, action) {
   switch (action.type) {
+    case 'UPDATE_MESSAGES':
+      let msgHolder = null;
+console.log(state.messages)
+      if (state.messages[action.message.senderId] === undefined) {
+        console.log('in update condition', action.message.senderId)
+        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [action.message]})
+      } else {
+        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [...state.messages[action.message.senderId], action.message]})
+      }
 
-    // case 'CHAT':
-    // console.log('action creator fired: ', action.type)
-    //   return state;//{...state, action.chatId}
+      return Object.assign({}, {
+        users: state.users,
+        meet: state.meet,
+        gmap: state.gmap,
+        chatBox: state.chatBox,
+        chatId: state.chatId,
+        messages: msgHolder,
+      });
 
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {
@@ -12,6 +28,7 @@ export default function reducer(state, action) {
         gmap: state.gmap,
         chatBox: state.chatBox,
         chatId: state.chatId,
+        messages: state.messages,
       });
     }
 
@@ -32,6 +49,7 @@ export default function reducer(state, action) {
         },
         chatBox: state.chatBox,
         chatId: state.chatId,
+        messages: state.messages,
       });
     }
 
@@ -46,6 +64,7 @@ export default function reducer(state, action) {
         gmap: state.gmap,
         chatBox: state.chatBox,
         chatId: state.chatId,
+        messages: state.messages,
       });
     }
 
@@ -60,6 +79,7 @@ export default function reducer(state, action) {
         gmap: state.gmap,
         chatBox: state.chatBox,
         chatId: state.chatId,
+        messages: state.messages,
       });
     }
 
@@ -74,6 +94,7 @@ export default function reducer(state, action) {
         gmap: state.gmap,
         chatBox: state.chatBox,
         chatId: state.chatId,
+        messages: state.messages,
       });
     }
 
@@ -88,6 +109,7 @@ export default function reducer(state, action) {
         gmap: state.gmap,
         chatBox: state.chatBox,
         chatId: state.chatId,
+        messages: state.messages,
       });
     }
 

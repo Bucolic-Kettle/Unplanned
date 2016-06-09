@@ -12,7 +12,12 @@ class Socket extends React.Component {
     setInterval(sendToServer, 5000);
     setInterval(updateLocation, 5000);
 
-    socketClient.on('chatMessage', (data) => { console.log('Recieved: ', data); });
+    socketClient.on('chatMessage', (data) => {
+      console.log('Recieved: ', data);
+
+      this.props.dispatch(actions.updateMessages({senderId:data.senderId, text: data.message.text, time: data.message.time}));
+
+    });
 
     // Listens for update then changes local state
     socketClient.on('update all users', this.updateUserList.bind(this));
@@ -29,6 +34,7 @@ class Socket extends React.Component {
 
   receivedMeetingRequest(requesterId) {
     // alert('this guy requested me');
+    console.log(requesterId);
     this.props.dispatch(actions.clearMeet());
     this.props.dispatch(actions.setRequester(requesterId));
   }
@@ -44,10 +50,9 @@ class Socket extends React.Component {
     this.props.dispatch(actions.clearMeet());
   }
 
-  handleMessage(chatId) {
-
-    this.props.dispatch(actions.updateMessager(chatId));
-  }
+  // handleMessage(chatId) {
+  //   this.props.dispatch(actions.updateMessager(chatId));
+  // }
 
   render() {
     return (<div>
