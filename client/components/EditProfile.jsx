@@ -23,7 +23,7 @@ class EditProfile extends Component {
 
   hideProfile(e) {
     e.preventDefault();
-    this.state.shouldRender = false;
+    this.setState({ shouldRender: false });
   }
 
   handleSubmit(e) {
