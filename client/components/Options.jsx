@@ -13,7 +13,6 @@ class Options extends Component {
 
   handleText() {
     const msg = this.refs.chatTest.value;
-    console.log(window.socket.id);
     window.socket.emit('test', msg);
     this.refs.chatTest.value = '';
   }
