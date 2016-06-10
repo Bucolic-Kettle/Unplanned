@@ -537,15 +537,19 @@ video#bgvid {
 }*/
 
 .myMessage {
+  font-size: .75em;
+  color: black;
   border-radius: 15px;
-  background: #354CA0;
+  background: #cceeff;
   text-align: center;
   margin: 5px;
 }
 
 .otherMessage {
+  font-size: .75em;
+  color: black;
   border-radius: 15px;
-  background: #9933ff;
+  background: #e0ebeb;
   text-align: center;
   margin: 5px;
 }
