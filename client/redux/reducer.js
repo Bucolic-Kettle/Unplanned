@@ -2,13 +2,10 @@ import { merge } from 'lodash';
 
 export default function reducer(state, action) {
   switch (action.type) {
-    case 'UPDATE_MESSAGES':
+    case 'UPDATE_MESSAGES': {
       let msgHolder = null;
       
-      console.log(state.messages);
-
       if (state.messages[action.message.senderId] === undefined) {
-        console.log('in update condition', action.message.senderId);
         msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [action.message]});
       } else {
         msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [...state.messages[action.message.senderId], action.message]});
@@ -22,6 +19,7 @@ export default function reducer(state, action) {
         chatId: state.chatId,
         messages: msgHolder,
       });
+    }
 
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const actions = {
   uploadProfileImage(img) {
-    console.log('uploadProfileImage!');
 
     const data = new FormData();
     data.append('image', img);
@@ -40,7 +39,6 @@ const actions = {
     }
   },
   updateMessages(message) {
-    console.log(message, "in action creator");
     return {
       type: 'UPDATE_MESSAGES',
       message,
