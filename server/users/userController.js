@@ -12,16 +12,16 @@ const create = (userObj) => {
   newUser.save();
 };
 
-const updateBio = function updateBio(user) {
-  User.findOneAndUpdate({ userID: user.userID },
-    { bio: user.bio, phoneNumber: user.phoneNumber })
-    .then(() => {
-      // success
-    })
-    .catch((err) => {
-      console.log('user.updateBio error:', err);
-    });
-};
+// const updateBio = function updateBio(user) {
+//   User.findOneAndUpdate({ userID: user.userID },
+//     { bio: user.bio, phoneNumber: user.phoneNumber })
+//     .then(() => {
+//       // success
+//     })
+//     .catch((err) => {
+//       console.log('user.updateBio error:', err);
+//     });
+// };
 
 const updateProfile = function updateProfile(user) {
   User.findOneAndUpdate({ userID: user.userID },
@@ -78,7 +78,6 @@ const flagUser = (req, res) => {
 
 module.exports = {
   create,
-  updateBio,
   updateProfile,
   checkExisting,
   flagUser,

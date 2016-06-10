@@ -11,6 +11,7 @@ class EditProfile extends Component {
       shouldRender: window.editProfile,
       bio: this.user.bio,
       name: this.user.name,
+      image: this.user.image,
       isImageUploading: false,
     };
   }
@@ -37,6 +38,7 @@ class EditProfile extends Component {
       shouldRender: false,
       bio: this.user.bio,
       name: this.user.name,
+      image: this.user.image,
     });
   }
 

@@ -95,7 +95,7 @@ class Gmap extends Component {
             </div> :
             null
           }
-          {// Don't show the Let's Meet button on a users's own InfoWindow
+          {// Don't show the Let's Meet button on a user's own InfoWindow
           marker.userID !== this.user.userID ?
             <button
               className="buttonSendMeetReq"
