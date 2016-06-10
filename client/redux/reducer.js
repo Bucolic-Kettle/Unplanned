@@ -1,17 +1,12 @@
-import { merge } from 'lodash';
-
 export default function reducer(state, action) {
   switch (action.type) {
-    case 'UPDATE_MESSAGES':
+    case 'UPDATE_MESSAGES': {
       let msgHolder = null;
-      
-      console.log(state.messages);
 
       if (state.messages[action.message.senderId] === undefined) {
-        console.log('in update condition', action.message.senderId);
-        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [action.message]});
+        msgHolder = Object.assign({}, state.messages, { [action.message.senderId]: [action.message] });
       } else {
-        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [...state.messages[action.message.senderId], action.message]});
+        msgHolder = Object.assign({}, state.messages, { [action.message.senderId]: [...state.messages[action.message.senderId], action.message] });
       }
 
       return Object.assign({}, {
@@ -22,7 +17,7 @@ export default function reducer(state, action) {
         chatId: state.chatId,
         messages: msgHolder,
       });
-
+    }
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {
         users: action.newUserList,
@@ -116,7 +111,6 @@ export default function reducer(state, action) {
     }
 
     case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
-      console.log('request sent');
       return Object.assign({}, state, {
         img: action.img,
         isImageUploading: true,
@@ -134,7 +128,7 @@ export default function reducer(state, action) {
         imageUpload: {
           isUploading: false,
           uploadErrorMsg: 'Could not upload image',
-        }
+        },
       });
     }
 
