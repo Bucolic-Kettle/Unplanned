@@ -1,6 +1,7 @@
 import React from 'react';
 import actions from '../redux/actions.js';
 import { connect } from 'react-redux';
+import { uniqBy } from 'lodash';
 
 class TextChat extends React.Component {
   constructor(props) {
@@ -58,6 +59,11 @@ class TextChat extends React.Component {
 
   render() {
     let list = this.props.messages[this.props.chatWith];
+
+    list = uniqBy(list, (message) => {
+      return message.time;
+    });
+
     return (
       <div className="overlay chat">
         <button
@@ -68,10 +74,12 @@ class TextChat extends React.Component {
           &times;
         </button>
         <div className="chatbox" ref="chatBox">
-          <ul>
-            {list ? list.map((message, i) => <li key={i}> {
-              message.username === undefined ? this.props.users[this.props.chatWith].name : message.username
-            } {message.text}</li> ) : null}
+          <ul className='popChat'>
+            {list ? list.map((message, i) =>
+            <li key={i} className={message.username === undefined ? "myMessage" : "otherMessage"}>
+            {message.username === undefined ? this.props.users[this.props.chatWith].name.split(" ")[0] : message.username.split(" ")[0]
+            } {`: ${message.text} ${message.time}`}
+            </li> ) : null}
           </ul>
         </div>
         <form onSubmit={(event) => { this.handleText(event, this.props.chatWith); }}>

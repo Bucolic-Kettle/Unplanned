@@ -496,26 +496,60 @@ video#bgvid {
   color: white !important;
   float: right !important;
   height: 30px !important;
-  margin-top: 10px !important;
-  margin-bottom: 20px !important;
-  margin-right: 10px !important;
   text-align: center !important;
   text-decoration: none !important;
   font-size: 14px !important;
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: 5px;
+  bottom: 5px;
 }
 
 .chatbox {
-  height: 500px;
-  margin-bottom: 20px;
   overflow-y: auto;
-  padding-bottom: 30px;
+  padding-bottom: 2em; /* this spot for chat*/
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 40px;
 }
 
 .message-input {
   box-sizing: border-box;
   height: 30px;
-  margin-bottom: 20px
-  margin-left: 20px;
-  margin-top: 10px;
-  width: 80%;
+  width: 70%;
+  position: absolute;
+  top: auto;
+  right:auto;
+  left: 5px;
+  bottom: 5px;
+}
+
+.popChat {
+  list-style: none;
+}
+
+/*.popChat li {
+  border-radius: 25px;
+  background: #354CA0;
+}*/
+
+.myMessage {
+  font-size: .75em;
+  color: black;
+  border-radius: 15px;
+  background: #cceeff;
+  text-align: center;
+  margin: 5px;
+}
+
+.otherMessage {
+  font-size: .75em;
+  color: black;
+  border-radius: 15px;
+  background: #e0ebeb;
+  text-align: center;
+  margin: 5px;
 }
