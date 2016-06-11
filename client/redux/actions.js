@@ -12,7 +12,7 @@ const actions = {
       },
     };
 
-    const request = axios.put('/api/v1/upload', data, config);
+    const request = axios.post('http://localhost:3000/api/v1/upload', data, config);
 
     return (dispatch) => {
       dispatch({
@@ -21,10 +21,10 @@ const actions = {
       });
 
       return request
-        .then(() => {
-
+        .then((data) => {
           dispatch({
             type: 'UPLOAD_PROFILE_IMAGE_SUCCESS',
+            url: data.data.path
           });
         })
         .catch((err) => {

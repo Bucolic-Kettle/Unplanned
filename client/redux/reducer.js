@@ -1,14 +1,12 @@
-import { merge } from 'lodash';
-
 export default function reducer(state, action) {
   switch (action.type) {
     case 'UPDATE_MESSAGES': {
       let msgHolder = null;
-      
+
       if (state.messages[action.message.senderId] === undefined) {
-        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [action.message]});
+        msgHolder = Object.assign({}, state.messages, { [action.message.senderId]: [action.message] });
       } else {
-        msgHolder = Object.assign({}, state.messages, {[action.message.senderId]: [...state.messages[action.message.senderId], action.message]});
+        msgHolder = Object.assign({}, state.messages, { [action.message.senderId]: [...state.messages[action.message.senderId], action.message] });
       }
 
       return Object.assign({}, {
@@ -20,7 +18,6 @@ export default function reducer(state, action) {
         messages: msgHolder,
       });
     }
-
     case 'UPDATE_USERLIST': {
       return Object.assign({}, {
         users: action.newUserList,
@@ -113,8 +110,15 @@ export default function reducer(state, action) {
       });
     }
 
+    case 'UPDATE_PROFILE': {
+      window.socket.api.updateProfile();
+
+      return Object.assign({}, state, {
+        window.socket.api.user
+      });
+    }
+
     case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
-      console.log('request sent');
       return Object.assign({}, state, {
         img: action.img,
         isImageUploading: true,
@@ -122,6 +126,7 @@ export default function reducer(state, action) {
     }
 
     case 'UPLOAD_PROFILE_IMAGE_SUCCESS': {
+      window.socket.api.user.image = action.url;
       return Object.assign({}, state, {
         isImageUploading: false,
       });
@@ -132,7 +137,7 @@ export default function reducer(state, action) {
         imageUpload: {
           isUploading: false,
           uploadErrorMsg: 'Could not upload image',
-        }
+        },
       });
     }
 

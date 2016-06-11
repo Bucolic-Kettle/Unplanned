@@ -106,6 +106,9 @@ class EditProfile extends Component {
 const mapStateToProps = function (state) {
   return {
     isImageUploading: state.isImageUploading,
+    bio: state.bio,
+    name: state.name,
+    image: state.image,
   };
 };
 

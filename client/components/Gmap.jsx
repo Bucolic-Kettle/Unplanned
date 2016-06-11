@@ -113,7 +113,6 @@ class Gmap extends Component {
 
 
   render() {
-    const { chatBox } = this.props;
     return (
       <GoogleMapLoader
         containerElement={
