@@ -472,6 +472,7 @@ video#bgvid {
   right: 20px;
   bottom: 80px;
   position: absolute;
+  padding: 2px;
   background: rgb(255, 255, 255);
   border-color: darkGrey;
   border-radius: 3px;
@@ -487,6 +488,8 @@ video#bgvid {
   color: darkGrey !important;
   float: right;
   font-size: 20px !important;
+  margin: 2px 4px 0 0 !important;
+  padding: 0 !important;
 }
 
 .button-send-message {
@@ -509,8 +512,8 @@ video#bgvid {
   padding-bottom: 2em; /* this spot for chat*/
   position: absolute;
   top: 20px;
-  left: 20px;
-  right: 20px;
+  left: 10px;
+  right: 10px;
   bottom: 40px;
 }
 
@@ -529,11 +532,6 @@ video#bgvid {
   list-style: none;
 }
 
-/*.popChat li {
-  border-radius: 25px;
-  background: #354CA0;
-}*/
-
 .myMessage {
   font-size: .75em;
   color: black;
@@ -550,4 +548,16 @@ video#bgvid {
   background: #e0ebeb;
   text-align: center;
   margin: 5px;
+}
+
+.smallify {
+  line-height: 70%;
+}
+
+.smallify > h3 {
+  font-size: 14px !important;
+}
+
+.smallify > p {
+  font-size: 10px !important;
 }
