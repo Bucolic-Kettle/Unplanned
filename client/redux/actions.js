@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const actions = {
   uploadProfileImage(img) {
-
+    
     const data = new FormData();
     data.append('image', img);
 
@@ -12,7 +12,7 @@ const actions = {
       },
     };
 
-    const request = axios.post('http://localhost:3000/api/v1/upload', data, config);
+    const request = axios.post('http://localhost:8000/api/v1/upload', data, config);
 
     return (dispatch) => {
       dispatch({
@@ -24,7 +24,7 @@ const actions = {
         .then((data) => {
           dispatch({
             type: 'UPLOAD_PROFILE_IMAGE_SUCCESS',
-            url: data.data.path
+            url: data.data.path,
           });
         })
         .catch((err) => {

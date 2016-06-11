@@ -109,15 +109,7 @@ export default function reducer(state, action) {
         messages: state.messages,
       });
     }
-
-    case 'UPDATE_PROFILE': {
-      window.socket.api.updateProfile();
-
-      return Object.assign({}, state, {
-        window.socket.api.user
-      });
-    }
-
+    
     case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
       return Object.assign({}, state, {
         img: action.img,
