@@ -118,6 +118,7 @@ export default function reducer(state, action) {
     }
 
     case 'UPLOAD_PROFILE_IMAGE_SUCCESS': {
+      window.socket.api.user.image = action.url;
       return Object.assign({}, state, {
         isImageUploading: false,
       });
