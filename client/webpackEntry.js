@@ -162,11 +162,11 @@ socketApi.updateLocation = function updateLocation() {
   }
 };
 
-socketApi.updateBio = function updateBio() {
-  if (socket.connected && socketApi.isLoggedIn) {
-    socket.emit('update bio', thisUser);
-  }
-};
+// socketApi.updateBio = function updateBio() {
+//   if (socket.connected && socketApi.isLoggedIn) {
+//     socket.emit('update bio', thisUser);
+//   }
+// };
 
 socketApi.updateProfile = function updateProfile() {
   if (socket.connected && socketApi.isLoggedIn) {

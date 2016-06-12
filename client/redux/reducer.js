@@ -109,7 +109,7 @@ export default function reducer(state, action) {
         messages: state.messages,
       });
     }
-
+    
     case 'UPLOAD_PROFILE_IMAGE_REQUEST': {
       return Object.assign({}, state, {
         img: action.img,
